@@ -23,6 +23,10 @@ def division(a, b):
         return b / a
 
 
+def power(a):
+    return a * a
+
+
 class DockerCalculator:
     result = 0
 
@@ -43,4 +47,8 @@ class DockerCalculator:
 
     def divide(self, a, b):
         self.result = division(a, b)
+        return self.result
+
+    def square(self, a):
+        self.result = power(a)
         return self.result

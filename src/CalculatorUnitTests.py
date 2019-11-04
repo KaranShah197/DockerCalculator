@@ -25,7 +25,11 @@ class MyTestCase(unittest.TestCase):
 
     def test_property_divide(self):
         self.assertEqual(self.calculator.divide(2, 4), 2)
-        self.assertEqual(self.calculator.divide(3, 14), 4)
+        self.assertEqual(self.calculator.divide(3, 12), 4)
+
+    def test_property_square(self):
+        self.assertEqual(self.calculator.square(5), 25)
+        self.assertEqual(self.calculator.square(12), 144)
 
 
 if __name__ == '__main__':
