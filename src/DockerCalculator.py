@@ -28,7 +28,7 @@ def power(a):
 
 
 def root(a):
-    return math.sqrt(a)
+    return round(math.sqrt(int(a)), 5)
 
 
 class DockerCalculator:
