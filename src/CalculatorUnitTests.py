@@ -15,6 +15,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(self.calculator.add(2, 2), 4)
         self.assertEqual(self.calculator.add(15, 5), 20)
 
+    def test_property_subtract(self):
+        self.assertEqual(self.calculator.subtract(10, 20), 10)
+        self.assertEqual(self.calculator.subtract(5, 5), 0)
 
 
 if __name__ == '__main__':
