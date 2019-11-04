@@ -23,6 +23,10 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(self.calculator.multiply(4, 4), 16)
         self.assertEqual(self.calculator.multiply(7, 8), 56)
 
+    def test_property_divide(self):
+        self.assertEqual(self.calculator.divide(2, 4), 2)
+        self.assertEqual(self.calculator.divide(3, 14), 4)
+
 
 if __name__ == '__main__':
     unittest.main()

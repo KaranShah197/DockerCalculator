@@ -15,6 +15,14 @@ def multiplication(a, b):
     return a * b
 
 
+def division(a, b):
+    if a == 0 or b == 0:
+        print("Either a or b is zero.")
+        return 0
+    else:
+        return b / a
+
+
 class DockerCalculator:
     result = 0
 
@@ -31,4 +39,8 @@ class DockerCalculator:
 
     def multiply(self, a, b):
         self.result = multiplication(a, b)
+        return self.result
+
+    def divide(self, a, b):
+        self.result = division(a, b)
         return self.result
