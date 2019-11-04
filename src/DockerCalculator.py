@@ -2,7 +2,7 @@ import math
 
 
 def addition(a, b):
-    return a + b
+    return int(a) + int(b)
 
 
 def subtraction(a, b):

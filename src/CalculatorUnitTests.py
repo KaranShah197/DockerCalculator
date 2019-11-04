@@ -1,4 +1,6 @@
 import unittest
+
+from CsvReader import CsvReader
 from DockerCalculator import DockerCalculator
 
 
@@ -14,6 +16,11 @@ class MyTestCase(unittest.TestCase):
     def test_property_add(self):
         self.assertEqual(self.calculator.add(2, 2), 4)
         self.assertEqual(self.calculator.add(15, 5), 20)
+
+        csvData = CsvReader('./src/Unit_Test_Addition.csv').data
+        for row in csvData:
+            self.assertEqual(self.calculator.add(row['Value 1'], row['Value 2']), int(row['Result']))
+            self.assertEqual(self.calculator.result, int(row['Result']))
 
     def test_property_subtract(self):
         self.assertEqual(self.calculator.subtract(10, 20), 10)

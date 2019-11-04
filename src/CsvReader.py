@@ -16,7 +16,6 @@ class CsvReader:
 
     def __init__(self, filepath):
         self.data = []
-        print("Abs: ", absolutePath(filepath))
 
         with open(absolutePath(filepath)) as text_data:
             csv_data = csv.DictReader(text_data, delimiter=',')
