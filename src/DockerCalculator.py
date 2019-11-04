@@ -24,7 +24,7 @@ def division(a, b):
 
 
 def power(a):
-    return a * a
+    return int(a) * int(a)
 
 
 def root(a):
