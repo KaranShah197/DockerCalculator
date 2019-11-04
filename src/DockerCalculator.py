@@ -1,3 +1,6 @@
+import math
+
+
 def addition(a, b):
     return a + b
 
@@ -27,6 +30,10 @@ def power(a):
     return a * a
 
 
+def root(a):
+    return math.sqrt(a)
+
+
 class DockerCalculator:
     result = 0
 
@@ -51,4 +58,8 @@ class DockerCalculator:
 
     def square(self, a):
         self.result = power(a)
+        return self.result
+
+    def squareRoot(self, a):
+        self.result = root(a)
         return self.result

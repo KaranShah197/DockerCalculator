@@ -31,6 +31,10 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(self.calculator.square(5), 25)
         self.assertEqual(self.calculator.square(12), 144)
 
+    def test_property_squareRoot(self):
+        self.assertEqual(self.calculator.squareRoot(36), 6)
+        self.assertEqual(self.calculator.squareRoot(100), 10)
+
 
 if __name__ == '__main__':
     unittest.main()
