@@ -25,6 +25,10 @@ class MyTestCase(unittest.TestCase):
     def test_property_subtract(self):
         self.assertEqual(self.calculator.subtract(10, 20), 10)
         self.assertEqual(self.calculator.subtract(5, 5), 0)
+        csvData = CsvReader('./src/Unit_Test_Subtraction.csv').data
+        for row in csvData:
+            self.assertEqual(self.calculator.subtract(row['Value 1'], row['Value 2']), int(row['Result']))
+            self.assertEqual(self.calculator.result, int(row['Result']))
 
     def test_property_multiply(self):
         self.assertEqual(self.calculator.multiply(4, 4), 16)

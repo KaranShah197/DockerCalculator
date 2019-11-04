@@ -6,12 +6,7 @@ def addition(a, b):
 
 
 def subtraction(a, b):
-    if a < b:
-        return b - a
-    elif a > b:
-        return a - b
-    else:
-        return 0
+    return int(b) - int(a)
 
 
 def multiplication(a, b):
