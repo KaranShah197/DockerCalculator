@@ -41,6 +41,10 @@ class MyTestCase(unittest.TestCase):
     def test_property_divide(self):
         self.assertEqual(self.calculator.divide(2, 4), 2)
         self.assertEqual(self.calculator.divide(3, 12), 4)
+        csvData = CsvReader('./src/Unit_Test_Division.csv').data
+        for row in csvData:
+            self.assertEqual(self.calculator.divide(row['Value 1'], row['Value 2']), float(row['Result']) )
+            self.assertEqual(self.calculator.result, float(row['Result']))
 
     def test_property_square(self):
         self.assertEqual(self.calculator.square(5), 25)

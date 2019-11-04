@@ -14,11 +14,13 @@ def multiplication(a, b):
 
 
 def division(a, b):
+    a = float(a)
+    b = float(b)
     if a == 0 or b == 0:
         print("Either a or b is zero.")
         return 0
     else:
-        return b / a
+        return round(b / a, 9)
 
 
 def power(a):
