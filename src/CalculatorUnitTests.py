@@ -19,6 +19,10 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(self.calculator.subtract(10, 20), 10)
         self.assertEqual(self.calculator.subtract(5, 5), 0)
 
+    def test_property_multiply(self):
+        self.assertEqual(self.calculator.multiply(4, 4), 16)
+        self.assertEqual(self.calculator.multiply(7, 8), 56)
+
 
 if __name__ == '__main__':
     unittest.main()
