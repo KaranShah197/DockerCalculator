@@ -1,7 +1,8 @@
 import datetime
 
-from sqlalchemy import Column, Integer, String, DateTime, Numeric
-from sqlalchemy.orm import create_engine, Session
+from sqlalchemy import Column, Integer, String, DateTime, Numeric, ForeignKey
+from sqlalchemy.orm import create_engine, Session, relationship
+from sqlalchemy.testing.pickleable import Order
 
 from Database.sqlalchemy_test import Base
 
@@ -22,6 +23,7 @@ class Customer(Base):
     town = Column(String(50), nullable=False)
     created_on = Column(DateTime(), default=datetime.time)
     updated_on = Column(DateTime(), default=datetime.time, onupdate=datetime.time)
+    orders = relationship("Order", backref='customer')
 
 
 class Item(Base):
@@ -31,6 +33,17 @@ class Item(Base):
     cost_price = Column(Numeric(10, 2), nullable=False)
     selling_price = Column(Numeric(10, 2), nullable=False)
     quantity = Column(Integer(), nullable=False)
+
+
+# OrderLine Table
+class OrderLine(Base):
+    __tablename__ = 'order_lines'
+    id = Column(Integer(), primary_key=True)
+    order_id = Column(Integer(), ForeignKey('orders.id'))
+    item_id = Column(Integer(), ForeignKey('items.id'))
+    quantity = Column(Integer())
+    order = relationship("Order", backref='order_lines')
+    item = relationship("Item")
 
 
 c1 = Customer(first_name='Toby',
@@ -64,4 +77,14 @@ i7 = Item(name='Watch', cost_price=100.58, selling_price=104.41, quantity=50)
 i8 = Item(name='Water Bottle', cost_price=20.89, selling_price=25, quantity=50)
 
 session.add_all([i1, i2, i3, i4, i5, i6, i7, i8])
+session.commit()
+
+o1 = Order(customer=c1)
+o2 = Order(customer=c1)
+
+line_item1 = OrderLine(order=o1, item=i1, quantity=3)
+line_item2 = OrderLine(order=o1, item=i2, quantity=2)
+line_item3 = OrderLine(order=o2, item=i1, quantity=1)
+
+session.add_all([o1, o2])
 session.commit()
