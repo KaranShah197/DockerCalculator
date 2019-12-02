@@ -39,3 +39,10 @@ c2 = Customer(first_name='Scott',
               address='424 Patterson Street',
               town='Beckinsdale'
               )
+
+
+session.add(c1)
+session.add(c2)
+# session.add_all([c3, c4, c5, c6])
+session.commit()
+
