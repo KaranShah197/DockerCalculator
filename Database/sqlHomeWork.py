@@ -126,3 +126,14 @@ session.query(
     func.count("*").label('town_count'),
     Customer.town
 ).group_by(Customer.town).having(func.count("*") > 2).all()
+
+
+i = session.query(Item).get(8)
+i.selling_price = 25.91
+session.add(i)
+session.commit()
+
+session.query(Item).filter(
+    Item.name.ilike("W%")
+).update({"quantity": 60}, synchronize_session='fetch')
+session.commit()
