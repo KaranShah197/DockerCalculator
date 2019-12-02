@@ -1,6 +1,6 @@
 import datetime
 
-from sqlalchemy import Column, Integer, String, DateTime, Numeric, ForeignKey
+from sqlalchemy import Column, Integer, String, DateTime, Numeric, ForeignKey, or_, and_, not_
 from sqlalchemy.orm import create_engine, Session, relationship
 from sqlalchemy.testing.pickleable import Order
 
@@ -88,3 +88,26 @@ line_item3 = OrderLine(order=o2, item=i1, quantity=1)
 
 session.add_all([o1, o2])
 session.commit()
+
+# find all customers who either live in Peterbrugh or Norfolk
+
+session.query(Customer).filter(or_(
+    Customer.town == 'Peterbrugh',
+    Customer.town == 'Norfolk'
+)).all()
+
+# find all customers whose first name is John and live in Norfolk
+
+session.query(Customer).filter(and_(
+    Customer.first_name == 'John',
+    Customer.town == 'Norfolk'
+)).all()
+
+# find all johns who don't live in Peterbrugh
+
+session.query(Customer).filter(and_(
+    Customer.first_name == 'John',
+    not_(
+        Customer.town == 'Peterbrugh',
+    )
+)).all()
